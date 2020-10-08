@@ -1,5 +1,5 @@
 {application,states,
-             [{applications,[kernel,stdlib,elixir,logger,httpoison]},
+             [{applications,[kernel,stdlib,elixir,logger,httpoison,bypass]},
               {description,"states"},
               {modules,['Elixir.States','Elixir.States.CityStateHandler',
                         'Elixir.States.Client','Elixir.States.Csv']},

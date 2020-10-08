@@ -4,7 +4,6 @@ defmodule StatesTest do
 
   describe "execute_from_client/1" do
     test "Should return the 3 first registries when no param is passed" do
-
       assert [
                {"(MG)", 853},
                {"(SP)", 645},
