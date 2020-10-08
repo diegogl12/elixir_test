@@ -3,16 +3,22 @@ defmodule States do
   alias States.Csv
   alias States.CityStateHandler
 
-  def run_from_client(quantity \\ 3) do
-    {:ok, response} = Client.get_states_and_cities()
-    
-    response
-    |> handle_info()
-    |> get_first_registries(quantity)
+  def execute_from_client(quantity \\ 3) do
+    case Client.get_states_and_cities() do
+      {:ok, response} -> result(response, quantity)
+      {_, reason} -> {:error, reason}
+    end
   end
 
-  def run_from_csv(quantity \\ 3) do
-    Csv.get_states_and_cities()
+  def execute_from_csv(quantity \\ 3) do
+    case Csv.get_states_and_cities() do
+      {:ok, response} -> result(response, quantity)
+      {_, reason} -> {:error, reason}
+    end
+  end
+
+  defp result(cities_info, quantity) do
+    cities_info
     |> handle_info
     |> get_first_registries(quantity)
   end

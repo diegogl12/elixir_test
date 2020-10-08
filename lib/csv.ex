@@ -1,8 +1,8 @@
-defmodule State.Csv do
-  @path "./csv_input.csv"
+defmodule States.Csv do
+  @default_path "./csv_input.csv"
 
-  def get_states_and_cities() do
-    Path.expand(@path)
-    |> File.stream!()
+  def get_states_and_cities(path \\ @default_path) do
+    Path.expand(path)
+    |> File.read()
   end
 end

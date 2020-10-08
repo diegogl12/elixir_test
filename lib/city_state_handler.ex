@@ -1,5 +1,7 @@
 defmodule States.CityStateHandler do
-  def slice_by_info(csv_input) do
+
+  def slice_by_info(""), do: nil
+  def slice_by_info(csv_input) when is_binary(csv_input) do
     cities =
       String.split(csv_input, "\n")
       |> Enum.map(fn info -> String.split(info, ",") end)
@@ -15,8 +17,9 @@ defmodule States.CityStateHandler do
       ]
     end)
   end
+  def slice_by_info(_), do: nil
 
-  def list_by_state(cities) do
+  def list_by_state(cities) when is_list(cities) do
     Enum.reduce(cities, %{}, fn city_state, acc ->
       [state, _] = city_state
 
@@ -24,7 +27,11 @@ defmodule States.CityStateHandler do
     end)
   end
 
-  def sort_by_cities_quantity(states) do
-    Enum.sort_by(states, fn {key, value} -> -value end)
+  def list_by_state(_), do: nil
+
+  def sort_by_cities_quantity(states) when is_map(states) do
+    Enum.sort_by(states, fn {_, value} -> -value end)
   end
+
+  def sort_by_cities_quantity(_), do: nil
 end

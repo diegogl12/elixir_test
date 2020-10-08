@@ -2,13 +2,14 @@ defmodule StatesTest do
   use ExUnit.Case
   alias States
 
-  describe "run_from_client/1" do
+  describe "execute_from_client/1" do
     test "Should return the 3 first registries when no param is passed" do
+
       assert [
                {"(MG)", 853},
                {"(SP)", 645},
                {"(RS)", 497}
-             ] = States.run_from_client()
+             ] = States.execute_from_client()
     end
 
     test "Should return the 5 first registries when 5 is a param" do
@@ -18,17 +19,17 @@ defmodule StatesTest do
                {"(RS)", 497},
                {"(BA)", 417},
                {"(PR)", 399}
-             ] = States.run_from_client(5)
+             ] = States.execute_from_client(5)
     end
   end
 
-  describe "run_from_csv/1" do
+  describe "execute_from_csv/1" do
     test "Should return the 3 first registries when no param is passed" do
       assert [
                {"(MG)", 853},
                {"(SP)", 645},
                {"(RS)", 497}
-             ] = States.run_from_csv()
+             ] = States.execute_from_csv()
     end
 
     test "Should return the 5 first registries when 5 is a param" do
@@ -38,7 +39,7 @@ defmodule StatesTest do
                {"(RS)", 497},
                {"(BA)", 417},
                {"(PR)", 399}
-             ] = States.run_from_csv(5)
+             ] = States.execute_from_csv(5)
     end
   end
 end
